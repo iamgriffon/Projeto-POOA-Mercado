@@ -7,11 +7,14 @@ public class Supermercado {
 	Cliente joaozinho = new Cliente("Joaozinho", "123.456.789-01");
 	Produto feijao = new Alimento("Feijão Preto", 10.00);
 	
-	joaozinho.carrinho.adicionarItem(feijao);
+	joaozinho.adicionarItem(feijao);
+	joaozinho.adicionarItem(feijao);
+	joaozinho.adicionarItem(feijao);
+	
 	joaozinho.getCarrinho();
 	
 	System.out.println("Joaozinho's CPF: "+joaozinho.getCpf());
-
+	
 	
 	}
 }

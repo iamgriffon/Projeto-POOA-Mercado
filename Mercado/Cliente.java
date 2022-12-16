@@ -3,7 +3,8 @@ package Mercado;
 public class Cliente {
 	private String nome;
 	private String cpf;
-	Carrinho carrinho;
+	
+	Carrinho carrinho = new Carrinho();
 
 	
 	//Constructor
@@ -31,7 +32,11 @@ public class Cliente {
 		this.nome = nome;
 	}
 	
- 	public Carrinho getCarrinho(){
-		return this.carrinho;	
+ 	public void getCarrinho(){
+		this.carrinho.getProdutos();
 	}
+ 	
+ 	public void adicionarItem(Produto produto) {
+ 		this.carrinho.adicionarItem(produto);
+ 	}
 }

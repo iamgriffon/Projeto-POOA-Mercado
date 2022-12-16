@@ -4,21 +4,25 @@ import java.util.ArrayList;
 
 public class Carrinho {
 
-	ArrayList<Produto> produtos;
+	private ArrayList<Produto> produtos = new ArrayList<Produto>();
+	private double totalPreco;
 	
-	public ArrayList<Produto> getProdutos() {
-		System.out.println(produtos);
-		return produtos;
+	public int size() {
+		return this.produtos.size();
+	};
+	
+	//Teste
+	public Carrinho() {
+		Produto teste = new Alimento("Teste", 0.99);
+		this.adicionarItem(teste);
 	}
 	
 	public void adicionarItem(Produto produto) {
 		if (this.produtos.contains(produto)) {
 			int index = this.produtos.indexOf(produto);
 			this.produtos.set(index, produto).adicionarQtd();
-			System.out.println("Adicionado com sucesso");
 		} else {
 			this.produtos.add(produto);
-			System.out.println("Adicionado com sucesso");
 		}
 	}
 	
@@ -33,8 +37,20 @@ public class Carrinho {
 		} catch(Exception error) { System.out.println("O seguinte erro aconteceu: " + error); };
 	};
 	
-	Produto feijao = new Alimento("Feijão Preto", 10.00);
+	public double calcularPreco() {
+		double accumulator = 0;
+		for(Produto k : this.produtos) {
+			
+			accumulator = accumulator + (k.preco * k.quantidade);
+		}
+		return this.totalPreco = accumulator;
+	}
 	
-	this.adicionarItem(feijao);
+	public void getProdutos() {
+		for(Produto k : this.produtos) {
+			System.out.println("Nome do Item: " + k.nome + "\n Quantidade: " + k.quantidade);
+		}
+		System.out.println("\n Total do Carrinho: R$"+ this.calcularPreco());
+	}
 	
 }
